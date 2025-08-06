@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avrial Shukla - Tech Portfolio</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#tech-stack">Tech Stack</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Aviral Shukla</h1>
+            <p>Full-Stack Developer & Tech Innovator</p>
+            <p style="font-size: 1.2rem; opacity: 0.8;">Crafting digital experiences with cutting-edge technology</p>
+            <a href="#projects" class="cta-button">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- Tech Stack 3D Visualization -->
+    <section id="tech-stack" class="tech-stack-section">
+        <h2 class="section-title">Interactive Tech Stack</h2>
+        <p style="opacity: 0.9; margin-bottom: 2rem;">Hover over the nodes to explore my technology expertise</p>
+        <div id="tech-stack-container"></div>
+    </section>
+
+    <!-- Gamified Projects -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title">Project Levels</h2>
+        <p style="text-align: center; opacity: 0.9; margin-bottom: 2rem;">Each project represents a new level in my development journey</p>
+        
+        <div class="project-levels">
+            <!-- Level 1 Project -->
+            <div class="project-card">
+                <div class="level-badge">Level 1 - Foundation</div>
+                <h3 class="project-title">🎨 Creative Portfolio Site</h3>
+                
+                <div class="problem-solution">
+                    <h4>📌 Problem:</h4>
+                    <p>Artists and designers need a visually stunning platform to showcase their work that stands out from generic portfolio templates.</p>
+                </div>
+                
+                <div class="problem-solution">
+                    <h4>💡 Solution:</h4>
+                    <p>Built a responsive, animated portfolio with CSS Grid, custom animations, and interactive galleries using vanilla JavaScript.</p>
+                </div>
+                
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">CSS Grid</span>
+                    <span class="tech-tag">Animations</span>
+                </div>
+
+                <div class="code-widget">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <div class="code-dot red"></div>
+                            <div class="code-dot yellow"></div>
+                            <div class="code-dot green"></div>
+                        </div>
+                        <span>gallery-animation.js</span>
+                        <button class="run-btn" onclick="runGalleryDemo()">Run Demo</button>
+                    </div>
+                    <div class="code-content">
+const gallery = document.querySelector('.gallery');<br>
+const items = gallery.querySelectorAll('.item');<br><br>
+items.forEach((item, index) => {<br>
+&nbsp;&nbsp;item.style.animationDelay = `${index * 0.1}s`;<br>
+&nbsp;&nbsp;item.addEventListener('mouseenter', () => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item.style.transform = 'scale(1.05) rotateY(5deg)';<br>
+&nbsp;&nbsp;});<br>
+});
+                    </div>
+                </div>
+                
+                <a href="#" class="live-demo-btn">View Live Demo</a>
+            </div>
+
+            <!-- Level 2 Project -->
+            <div class="project-card">
+                <div class="level-badge">Level 2 - Full-Stack</div>
+                <h3 class="project-title">📱 Task Management App</h3>
+                
+                <div class="problem-solution">
+                    <h4>📌 Problem:</h4>
+                    <p>Teams struggle with task coordination and real-time collaboration across different time zones and devices.</p>
+                </div>
+                
+                <div class="problem-solution">
+                    <h4>💡 Solution:</h4>
+                    <p>Developed a real-time collaborative task manager with React frontend, Node.js backend, and MongoDB database featuring live updates and team synchronization.</p>
+                </div>
+                
+                <div class="tech-tags">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Socket.io</span>
+                    <span class="tech-tag">Express</span>
+                </div>
+
+                <div class="code-widget">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <div class="code-dot red"></div>
+                            <div class="code-dot yellow"></div>
+                            <div class="code-dot green"></div>
+                        </div>
+                        <span>real-time-updates.js</span>
+                        <button class="run-btn" onclick="runTaskDemo()">Run Demo</button>
+                    </div>
+                    <div class="code-content">
+// Real-time task updates<br>
+socket.on('taskUpdate', (task) => {<br>
+&nbsp;&nbsp;setTasks(prev => prev.map(t => <br>
+&nbsp;&nbsp;&nbsp;&nbsp;t.id === task.id ? { ...t, ...task } : t<br>
+&nbsp;&nbsp;));<br>
+&nbsp;&nbsp;showNotification(`Task "${task.title}" updated!`);<br>
+});
+                    </div>
+                </div>
+                
+                <a href="#" class="live-demo-btn">View Live Demo</a>
+            </div>
+
+            <!-- Level 3 Project -->
+            <div class="project-card">
+                <div class="level-badge">Level 3 - AI Integration</div>
+                <h3 class="project-title">🤖 Smart Code Assistant</h3>
+                
+                <div class="problem-solution">
+                    <h4>📌 Problem:</h4>
+                    <p>Developers spend too much time debugging and searching for code solutions, reducing productivity and learning efficiency.</p>
+                </div>
+                
+                <div class="problem-solution">
+                    <h4>💡 Solution:</h4>
+                    <p>Created an AI-powered code assistant that analyzes code patterns, suggests optimizations, and provides intelligent debugging using machine learning algorithms.</p>
+                </div>
+                
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">NLP</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+
+                <div class="code-widget">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <div class="code-dot red"></div>
+                            <div class="code-dot yellow"></div>
+                            <div class="code-dot green"></div>
+                        </div>
+                        <span>ai-analyzer.py</span>
+                        <button class="run-btn" onclick="runAIDemo()">Run Demo</button>
+                    </div>
+                    <div class="code-content">
+def analyze_code_pattern(code_snippet):<br>
+&nbsp;&nbsp;tokens = tokenizer.encode(code_snippet)<br>
+&nbsp;&nbsp;prediction = model.predict([tokens])<br>
+&nbsp;&nbsp;confidence = np.max(prediction)<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;if confidence > 0.8:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return suggest_optimization(code_snippet)<br>
+&nbsp;&nbsp;return {"status": "code_looks_good"}
+                    </div>
+                </div>
+                
+                <a href="#" class="live-demo-btn">View Live Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Radar -->
+    <section id="skills" class="skills-section">
+        <h2 class="section-title">Skills Radar</h2>
+        <p style="opacity: 0.9; margin-bottom: 2rem;">Interactive visualization of my technical expertise</p>
+        <div id="skills-radar"></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Let's Connect</h2>
+        <p style="opacity: 0.9; margin-bottom: 2rem;">Ready to collaborate on your next project?</p>
+        
+       <div class="contact-grid">
+    <!-- Email -->
+    <a href="mailto:shuklaaviral403@gmail.com" target="_blank" rel="noopener noreferrer">
+        <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <h3>Email</h3>
+            <p>shuklaaviral403@gmail.com</p>
+        </div>
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/getchaviral" target="_blank" rel="noopener noreferrer">
+        <div class="contact-item">
+            <div class="contact-icon">💻</div>
+            <h3>GitHub</h3>
+            <p>github.com/aviral-shukla</p>
+        </div>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/aviral-shukla-736a7622b/" target="_blank" rel="noopener noreferrer">
+        <div class="contact-item">
+            <div class="contact-icon">🔗</div>
+            <h3>LinkedIn</h3>
+            <p>linkedin.com/in/aviral-shukla</p>
+        </div>
+    </a>
+</div>
+
+    </section>
+
+    <!-- JavaScript Files -->
+    <script src="js/particles.js"></script>
+    <script src="js/techStack3D.js"></script>
+    <script src="js/skillsRadar.js"></script>
+    <script src="js/demos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
