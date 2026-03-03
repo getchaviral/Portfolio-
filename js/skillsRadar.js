@@ -16,6 +16,9 @@ class SkillsRadar {
         this.svg = null;
         this.tooltip = null;
         this.glowId = `glow-${containerId}`;
+        this.targetRotation = 0;
+        this.currentRotation = 0;
+        this.rotationFrame = null;
         
         this.skills = [
             { skill: "JavaScript / React", value: 85, color: "#f7df1e", description: "Building interactive UIs, reusable components, and scalable frontend architecture" },
@@ -297,16 +300,42 @@ class SkillsRadar {
                 this.showSkillDetail(d);
             });
         
-        // Add rotation on mouse move
+        // Add smooth, bounded rotation on mouse move
+        const svgEl = this.container.select("svg").node();
         this.svg.on("mousemove", (event) => {
-            const [mouseX, mouseY] = d3.pointer(event);
-            const angle = Math.atan2(mouseY, mouseX);
-
-            this.svg.attr("transform", `${this.baseTransform} rotate(${(angle * 180 / Math.PI) * 0.5})`);
+            if (!svgEl) return;
+            const [x] = d3.pointer(event, svgEl);
+            const normalizedX = (x - this.width / 2) / (this.width / 2);
+            const clampedX = Math.max(-1, Math.min(1, normalizedX));
+            const maxTilt = 8;
+            this.targetRotation = clampedX * maxTilt;
+            this.startRotationLoop();
         })
         .on("mouseleave", () => {
-            this.svg.attr("transform", this.baseTransform);
+            this.targetRotation = 0;
+            this.startRotationLoop();
         });
+    }
+
+    startRotationLoop() {
+        if (this.rotationFrame) return;
+
+        const tick = () => {
+            const delta = this.targetRotation - this.currentRotation;
+            this.currentRotation += delta * 0.12;
+            this.svg.attr("transform", `${this.baseTransform} rotate(${this.currentRotation})`);
+
+            if (Math.abs(delta) < 0.05) {
+                this.currentRotation = this.targetRotation;
+                this.svg.attr("transform", `${this.baseTransform} rotate(${this.currentRotation})`);
+                this.rotationFrame = null;
+                return;
+            }
+
+            this.rotationFrame = requestAnimationFrame(tick);
+        };
+
+        this.rotationFrame = requestAnimationFrame(tick);
     }
     
     showSkillDetail(skill) {
@@ -395,6 +424,10 @@ class SkillsRadar {
     }
     
     destroy() {
+        if (this.rotationFrame) {
+            cancelAnimationFrame(this.rotationFrame);
+            this.rotationFrame = null;
+        }
         if (this.container) {
             this.container.selectAll("*").remove();
         }
