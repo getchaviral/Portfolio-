@@ -201,29 +201,78 @@
 
 /* Contact Items */
 .contact-item {
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 15px;
+    padding: 1.4rem;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(0, 212, 255, 0.05));
+    border-radius: 16px;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(0, 212, 255, 0.12), rgba(255, 107, 107, 0.08));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .contact-item:hover {
-    transform: translateY(-5px);
-    background: rgba(0, 212, 255, 0.1);
+    transform: translateY(-6px);
+    border-color: rgba(0, 212, 255, 0.45);
+    box-shadow: 0 12px 28px rgba(0, 212, 255, 0.18);
+}
+
+.contact-item:hover::before {
+    opacity: 1;
 }
 
 .contact-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #00d4ff;
-}
-.contact-grid a {
-    text-decoration: none; /* remove underline */
-    color: white; /* make text white */
-    display: block; /* make whole box clickable */
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    color: #071423;
+    background: linear-gradient(135deg, #00d4ff, #4ecdc4);
+    box-shadow: 0 6px 18px rgba(0, 212, 255, 0.3);
 }
 
-.contact-grid a:hover {
-    opacity: 0.8; /* optional hover effect */
+.contact-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    color: #c8f5ff;
+}
+
+.contact-value {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    word-break: break-word;
+}
+
+.contact-meta {
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.contact-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-radius: 16px;
 }
