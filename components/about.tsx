@@ -6,11 +6,9 @@ export function About() {
     <Reveal>
       <div className="panel rounded-xl p-6 sm:p-8">
         <p className="max-w-3xl text-base leading-8 text-zinc-300 sm:text-lg">
-          I&apos;m a final-year Computer Science student and full-stack developer
-          focused on building reliable, user-friendly web applications. I work
-          across React interfaces, Node.js APIs, authentication, databases, and
-          caching. I enjoy turning practical problems into clean, maintainable
-          software.
+          I&apos;m a full-stack developer who builds
+           and ships — React interfaces, Node.js APIs, auth systems, 
+           databases, caching. I care about clean code and software that actually works for people.
         </p>
       </div>
     </Reveal>

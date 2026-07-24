@@ -36,7 +36,7 @@ export function Hero() {
               </a>
             </Button>
             <Button asChild variant="outline">
-              <a href="/aviral-shukla-resume.pdf" download>
+              <a href="https://drive.google.com/file/d/1s0cm8Nu098vTxKYkuxiKOxO_qlWUvZvL/view?usp=drive_link" download>
                 <Download className="size-4" /> Resume
               </a>
             </Button>
